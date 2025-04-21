@@ -13,42 +13,39 @@
             scroll-behavior: smooth;
         }
         body {
-             /* Simple gradient background */
             background: linear-gradient(115deg, white, rgb(210, 210, 210));
-            font-family: sans-serif; /* Add a default font */
+            font-family: sans-serif;
         }
-        /* Basic Navbar Styling (can be enhanced in main.css) */
         #navbar {
             overflow: hidden;
-            background-color: #333; /* Dark background for navbar */
+            background-color: #333;
             padding: 10px 0;
             text-align: center;
         }
         #navbar a {
-            display: inline-block; /* Display links side-by-side */
+            display: inline-block;
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
             font-size: 17px;
-            margin: 0 5px; /* Add some space between links */
-            border-radius: 5px; /* Rounded corners for links */
+            margin: 0 5px;
+            border-radius: 5px;
         }
         #navbar a:hover {
             background-color: #ddd;
             color: black;
         }
-        #navbar a.active { /* Style for the active/current link */
+        #navbar a.active {
             background-color: #555;
             color: white;
         }
-        /* Style for form elements */
         .search-form label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
             color: #333;
-            text-align: left; /* Align labels left */
+            text-align: left;
         }
         .search-form input[type="text"],
         .search-form select,
@@ -58,42 +55,39 @@
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            box-sizing: border-box; /* Include padding and border in element's total width and height */
-            font-size: 1rem; /* Ensure readable font size */
+            box-sizing: border-box;
+            font-size: 1rem; 
         }
         .search-form .button {
             margin-top: 10px;
         }
-        /* Wrapper for fields to enable grid layout */
         .fields {
              display: grid;
-             grid-template-columns: 1fr 1fr; /* Two columns */
-             gap: 15px; /* Space between columns and rows */
+             grid-template-columns: 1fr 1fr;
+             gap: 15px;
         }
-        /* Style for search results area */
         #search-results {
             margin-top: 30px;
             padding: 20px;
-            background-color: #f9f9f9; /* Light background for results */
+            background-color: #f9f9f9;
             border-radius: 8px;
             border: 1px solid #eee;
-            text-align: left; /* Align results text left */
+            text-align: left;
         }
         #search-results h3 {
             margin-top: 0;
             color: #333;
-            text-align: center; /* Center the 'Results' heading */
+            text-align: center;
             margin-bottom: 20px;
         }
-        #search-results p.status-message { /* Style for status messages */
+        #search-results p.status-message {
             color: #555;
             text-align: center;
             font-style: italic;
         }
-        /* Simple grid for results */
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
         .result-item {
@@ -101,17 +95,17 @@
             padding: 15px;
             border-radius: 5px;
             background-color: #fff;
-            display: flex; /* Use flexbox for layout */
-            flex-direction: column; /* Stack elements vertically */
+            display: flex;
+            flex-direction: column;
         }
          .result-item img {
             max-width: 100%;
-            height: 200px; /* Fixed height for consistency */
-            object-fit: cover; /* Scale image nicely */
+            height: 200px;
+            object-fit: cover;
             display: block;
             margin-bottom: 10px;
             border-radius: 4px;
-            background-color: #eee; /* Background for unloaded images */
+            background-color: #eee;
          }
          .result-item h4 {
             margin-top: 0;
@@ -126,26 +120,25 @@
             line-height: 1.4;
          }
          .result-item .button {
-             margin-top: auto; /* Push button to the bottom */
-             align-self: flex-start; /* Align button left */
+             margin-top: auto;
+             align-self: flex-start;
          }
-         /* Loading indicator style */
         .loader {
-            border: 5px solid #f3f3f3; /* Light grey */
-            border-top: 5px solid #555; /* Dark grey */
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #555;
             border-radius: 50%;
             width: 40px;
             height: 40px;
             animation: spin 1s linear infinite;
-            margin: 20px auto; /* Center the loader */
+            margin: 20px auto;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         #navbar a#welcome-message {
-			float: right; /* Align the welcome message to the right */
-			margin-right: 10px; /* Add some space between the message and the edge */
+			float: right;
+			margin-right: 10px;
 		}
     </style>
     <script>history.scrollRestoration = "manual"</script>
@@ -241,18 +234,14 @@
         if (searchForm) {
             searchForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-
-                // Show loading indicator
                 resultsContainer.innerHTML = '<h3>Results</h3><div class="loader"></div><p class="status-message">Searching...</p>';
 
-                // Get form data
                 const formData = new FormData(searchForm);
                 const params = new URLSearchParams(formData).toString();
                 const fetchUrl = `php_scripts/search_handler.php?${params}`;
 
                 console.log('Fetching:', fetchUrl);
 
-                // Use Fetch API
                 fetch(fetchUrl)
                     .then(response => {
                         if (!response.ok) {

@@ -1,15 +1,13 @@
 <?php
-// File: c:\xampp\htdocs\CS370\php_scripts\artwork_detail.php
 
 session_start();
-require 'db.php'; // Correct: db.php is in the same directory
+require 'db.php';
 
 $art_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $artwork = null;
 $error = null;
-// Default image path needs to go UP one level to find the placeholder service or images folder
-$imageUrl = 'https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found'; // Placeholder URL is absolute, OK
+$imageUrl = 'https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found';
 
 if ($art_id > 0 && isset($pdo)) {
     try {
@@ -22,12 +20,9 @@ if ($art_id > 0 && isset($pdo)) {
         $artwork = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($artwork) {
-            // Image paths need to go UP one level from php_scripts to find the images folder
-            $baseImagePath = '../images/' . $artwork['art_id']; // *** CHANGED: Added ../ ***
+            $baseImagePath = '../images/' . $artwork['art_id'];
             $jpgPath = $baseImagePath . '.jpg';
             $pngPath = $baseImagePath . '.png';
-
-            // file_exists needs the correct relative path from THIS script's location
             if (file_exists($jpgPath)) {
                 $imageUrl = $jpgPath;
             } elseif (file_exists($pngPath)) {
@@ -52,11 +47,9 @@ if ($art_id > 0 && isset($pdo)) {
     <title>Artwork Details - Art Gallery</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <!-- CSS Paths need to go UP one level -->
-    <link rel="stylesheet" href="../assets/css/main.css" /> <!-- *** CHANGED: Added ../ *** -->
-    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript> <!-- *** CHANGED: Added ../ *** -->
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
     <style>
-        /* Styles remain the same */
         body { background: linear-gradient(115deg, white, rgb(210, 210, 210)); padding: 20px; font-family: sans-serif;}
         .detail-container { max-width: 800px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .detail-container img { max-width: 100%; height: auto; display: block; margin: 0 auto 20px auto; background-color: #eee; border: 1px solid #ccc; }
@@ -81,7 +74,6 @@ if ($art_id > 0 && isset($pdo)) {
     <div class="detail-container">
         <?php if ($artwork): ?>
             <h1><?php echo htmlspecialchars($artwork['title']); ?></h1>
-            <!-- Image src path determined by PHP already includes ../ -->
             <img src="<?php echo $imageUrl; ?>" alt="<?php echo htmlspecialchars($artwork['title']); ?>"
                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found';">
 
@@ -97,19 +89,16 @@ if ($art_id > 0 && isset($pdo)) {
             <h2>Artwork Not Found</h2>
             <p>The requested artwork (ID: <?php echo htmlspecialchars($art_id); ?>) could not be found.</p>
         <?php endif; ?>
-        <!-- Back to search link needs to go UP one level -->
-        <p><a href="../search.html" class="button small">Back to Search</a></p> <!-- *** CHANGED: Added ../ *** -->
+        <p><a href="../search.html" class="button small">Back to Search</a></p>
     </div>
 
-    <!-- script.js path needs to go UP one level -->
-    <script src="../script.js"></script> <!-- *** CHANGED: Added ../ *** -->
+    <script src="../script.js"></script>
     <script>
-        // Attach listener using the correct function name 'logout'
         const logoutLinkDetail = document.getElementById('logout-link-detail');
         if (logoutLinkDetail && typeof logout === 'function') {
              logoutLinkDetail.addEventListener('click', function(event) {
-                 event.preventDefault(); // Prevent default link behavior
-                 logout(); // Call the correct logout function
+                 event.preventDefault();
+                 logout();
              });
         } else if (logoutLinkDetail) {
             console.error("Logout function not found in script.js, cannot attach listener.");

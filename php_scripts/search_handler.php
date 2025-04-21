@@ -41,7 +41,6 @@ if (!empty($type)) {
     $params[':type'] = $type;
 }
 
-// Handle date range
 if (!empty($dateStart)) {
     $sql .= " AND art.date_created >= :date_start";
     $params[':date_start'] = $dateStart;
