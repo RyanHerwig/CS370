@@ -301,7 +301,7 @@
                         <p><strong>Artist:</strong> ${item.artist_name || 'Unknown Artist'}</p>
                         <p><strong>Genre:</strong> ${item.genre || 'N/A'} | <strong>Type:</strong> ${item.type || 'N/A'}</p>
                         <p><strong>Date:</strong> ${item.date_created || 'N/A'}</p>
-                        <a href="artwork_detail.php?id=${item.art_id}" class="button small">View Details</a>
+                        <a href="php_scripts/artwork_detail.php?id=${item.art_id}" class="button small">View Details</a>
                     `;
                     resultsGrid.appendChild(resultItem);
                 });
