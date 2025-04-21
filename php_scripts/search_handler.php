@@ -2,12 +2,6 @@
 session_start();
 // search_handler.php
 
-if (!isset($_SESSION['userid'])) {
-    http_response_code(401); // Unauthorized
-    echo json_encode(['error' => 'Unauthorized: User must be logged in.']);
-    exit;
-}
-
 require 'db.php';
 
 header('Content-Type: application/json');
