@@ -6,7 +6,7 @@
 -->
 <html>
 <head>
-	<title>Art Gallery</title>
+	<title>Home - Art Gallery</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css" />
@@ -42,18 +42,20 @@
             background-color: #555;
             color: white;
         }
+		#navbar a#welcome-message {
+			float: right; /* Align the welcome message to the right */
+			margin-right: 10px; /* Add some space between the message and the edge */
+		}
+
 	</style>
 	
 	<script>history.scrollRestoration = "manual"</script>
 </head>
 
 <body class="is-preload" style="background: linear-gradient(115deg, white, rgb(120, 120, 120));">
-	<div id="navbar">
-		<a class="active" href="index.html">Home</a>
-		<a href="search.html">Search</a>
-		<a href="#about">About</a> 
-		<a href="#login">Login</a>
-	</div>
+    <div id="navbar">
+        <a class="active" href="index.html">Home</a> <a href="search.html">Search</a> <a href="about.html">About</a> <a href="login.html">Login</a> </div>
+
 	<!-- Wrapper -->
 	<div id="wrapper" class="divided">
 		<!-- One -->
@@ -160,6 +162,7 @@
 	<script src="./assets/js/breakpoints.min.js"></script>
 	<script src="./assets/js/util.js"></script>
 	<script src="./assets/js/main.js"></script>
+<script src="script.js"></script>
 </body>
 
 </html>

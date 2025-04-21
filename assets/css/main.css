@@ -2423,6 +2423,17 @@ label {
 	margin: 0 0 1rem 0;
 }
 
+#navbar a#panel-button {
+    float: left; /* Align the panel button to the left */
+    margin-left: 10px; /* Add some space between the button and the edge */
+}
+#navbar a#welcome-message {
+    float: right; /* Align the welcome message to the right */
+    margin-right: 10px; /* Add some space between the message and the edge */
+}
+
+
+
 input[type="text"],
 input[type="password"],
 input[type="email"],

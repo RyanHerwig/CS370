@@ -143,13 +143,17 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        #navbar a#welcome-message {
+			float: right; /* Align the welcome message to the right */
+			margin-right: 10px; /* Add some space between the message and the edge */
+		}
     </style>
     <script>history.scrollRestoration = "manual"</script>
 </head>
 <body class="is-preload">
 
     <div id="navbar">
-        <a href="index.html">Home</a> <a class="active" href="search.html">Search</a> <a href="index.html#about">About</a> <a href="index.html#login">Login</a> </div>
+        <a href="index.html">Home</a> <a class="active" href="search.html">Search</a> <a href="about.html">About</a> <a href="login.html">Login</a> </div>
 
     <div id="wrapper" class="divided">
 
@@ -284,8 +288,12 @@
                 resultsData.forEach(item => {
                     const resultItem = document.createElement('div');
                     resultItem.className = 'result-item';
-
-                    const imageUrl = `https://placehold.co/600x400/EEE/31343C?text=${encodeURIComponent(item.title || 'Artwork')}`;
+                    
+                    // images are uploaded and named by art_id, try jpg first, then png
+                    const imageUrl = `images/${item.art_id}.jpg`;
+                    if (imageUrl == null) {
+                        imageUrl = `images/${item.art_id}.png`;
+                    }
 
                     resultItem.innerHTML = `
                         <img src="${imageUrl}" alt="${item.title || 'Artwork'}" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found';" />
@@ -316,6 +324,6 @@
         });
 
     </script>
-
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Login - Art Gallery</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+             /* Simple gradient background */
+            background: linear-gradient(115deg, white, rgb(210, 210, 210));
+            font-family: sans-serif; /* Add a default font */
+        }
+        /* Basic Navbar Styling (can be enhanced in main.css) */
+        #navbar {
+            overflow: hidden;
+            background-color: #333; /* Dark background for navbar */
+            padding: 10px 0;
+            text-align: center;
+        }
+        #navbar a {
+            display: inline-block; /* Display links side-by-side */
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            margin: 0 5px; /* Add some space between links */
+            border-radius: 5px; /* Rounded corners for links */
+        }
+        #navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        #navbar a.active { /* Style for the active/current link */
+            background-color: #555;
+            color: white;
+        }
+
+        #form-container {
+            display: inline-grid;
+            align-self: center;
+        }
+
+        #login_box {
+            height: 100vh; /* Full height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: rgb(62, 62, 62);
+            padding: 30px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* space between inputs */
+            width: 300px;
+        }
+
+        .form-container input,
+        .form-container button {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .form-container input {
+            background-color: #f2f2f2;
+        }
+
+        .form-container button {
+            background-color: #6d6d6d;
+            color: white;
+            cursor: pointer;
+        }
+
+
+        .form-container button:hover {
+            background-color: #cecece;
+            transform: scale(1.1);
+        }
+        #navbar a#welcome-message {
+			float: right; /* Align the welcome message to the right */
+			margin-right: 10px; /* Add some space between the message and the edge */
+		}
+
+    </style>
+</head>
+<body class="is-preload">
+    <div id="navbar">
+        <a href="index.html">Home</a> <a href="search.html">Search</a> <a href="about.html">About</a> <a class="active" href="login.html">Login</a> </div>
+    <div id="login_box">
+        <div class="form-container">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button id="login">Login</button>
+        </div>
+    </div>
+        
+<script src="script.js"></script>
+</body>
+</html>

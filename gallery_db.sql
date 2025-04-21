@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2025 at 02:50 AM
+-- Generation Time: Apr 21, 2025 at 06:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `gallery_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts`
+--
+
+CREATE TABLE `accounts` (
+  `userid` int(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`userid`, `username`, `password`) VALUES
+(1, 'admin', '$2y$10$t.QI9kpCYV52bZacjsswzOC6wnaCVc5MDrwu4uyq01qXZXUdINOji');
 
 -- --------------------------------------------------------
 
@@ -75,6 +94,13 @@ INSERT INTO `artist` (`artist_id`, `first_name`, `last_name`, `dob`) VALUES
 --
 
 --
+-- Indexes for table `accounts`
+--
+ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`userid`),
+  ADD UNIQUE KEY `username_UNIQUE` (`username`);
+
+--
 -- Indexes for table `art`
 --
 ALTER TABLE `art`
@@ -95,6 +121,12 @@ ALTER TABLE `artist`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `accounts`
+--
+ALTER TABLE `accounts`
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `art`
