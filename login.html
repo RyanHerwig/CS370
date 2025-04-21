@@ -13,32 +13,30 @@
             scroll-behavior: smooth;
         }
         body {
-             /* Simple gradient background */
             background: linear-gradient(115deg, white, rgb(210, 210, 210));
-            font-family: sans-serif; /* Add a default font */
+            font-family: sans-serif;
         }
-        /* Basic Navbar Styling (can be enhanced in main.css) */
         #navbar {
             overflow: hidden;
-            background-color: #333; /* Dark background for navbar */
+            background-color: #333;
             padding: 10px 0;
             text-align: center;
         }
         #navbar a {
-            display: inline-block; /* Display links side-by-side */
+            display: inline-block;
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
             font-size: 17px;
-            margin: 0 5px; /* Add some space between links */
-            border-radius: 5px; /* Rounded corners for links */
+            margin: 0 5px;
+            border-radius: 5px;
         }
         #navbar a:hover {
             background-color: #ddd;
             color: black;
         }
-        #navbar a.active { /* Style for the active/current link */
+        #navbar a.active {
             background-color: #555;
             color: white;
         }
@@ -49,7 +47,7 @@
         }
 
         #login_box {
-            height: 100vh; /* Full height */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -61,7 +59,7 @@
             border-radius: 10px;
             display: flex;
             flex-direction: column;
-            gap: 15px; /* space between inputs */
+            gap: 15px;
             width: 300px;
         }
 
@@ -78,10 +76,18 @@
         }
 
         .form-container button {
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
             background-color: #6d6d6d;
             color: white;
             cursor: pointer;
         }
+
 
 
         .form-container button:hover {
@@ -89,8 +95,8 @@
             transform: scale(1.1);
         }
         #navbar a#welcome-message {
-			float: right; /* Align the welcome message to the right */
-			margin-right: 10px; /* Add some space between the message and the edge */
+			float: right;
+			margin-right: 10px;
 		}
 
     </style>

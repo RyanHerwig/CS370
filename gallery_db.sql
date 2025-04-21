@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2025 at 06:01 AM
+-- Generation Time: Apr 21, 2025 at 09:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -89,6 +89,33 @@ INSERT INTO `artist` (`artist_id`, `first_name`, `last_name`, `dob`) VALUES
 (3, 'Claude', 'Monet', '1840-11-14'),
 (4, 'Pablo', 'Picasso', '1881-10-25');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `showcase_config`
+--
+
+CREATE TABLE `showcase_config` (
+  `slot_id` varchar(50) NOT NULL,
+  `art_id` int(11) DEFAULT NULL,
+  `custom_description` text DEFAULT NULL,
+  `last_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `showcase_config`
+--
+
+INSERT INTO `showcase_config` (`slot_id`, `art_id`, `custom_description`, `last_updated`) VALUES
+('gallery1', NULL, NULL, '2025-04-21 05:53:48'),
+('gallery2', NULL, NULL, '2025-04-21 05:53:48'),
+('gallery3', NULL, NULL, '2025-04-21 05:53:48'),
+('gallery4', NULL, NULL, '2025-04-21 05:53:48'),
+('gallery5', NULL, NULL, '2025-04-21 05:53:48'),
+('spotlight1', 4, 'Nice painting', '2025-04-21 06:24:20'),
+('spotlight2', 1, 'Real neat.', '2025-04-21 06:24:20'),
+('spotlight3', 3, 'Water lilies!', '2025-04-21 06:24:20');
+
 --
 -- Indexes for dumped tables
 --
@@ -117,6 +144,12 @@ ALTER TABLE `art`
 ALTER TABLE `artist`
   ADD PRIMARY KEY (`artist_id`),
   ADD KEY `idx_artist_fullname` (`last_name`,`first_name`);
+
+--
+-- Indexes for table `showcase_config`
+--
+ALTER TABLE `showcase_config`
+  ADD PRIMARY KEY (`slot_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables

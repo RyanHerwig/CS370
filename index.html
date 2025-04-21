@@ -1,10 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Story by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
 <head>
 	<title>Home - Art Gallery</title>
 	<meta charset="utf-8" />
@@ -46,114 +40,132 @@
 			float: right; /* Align the welcome message to the right */
 			margin-right: 10px; /* Add some space between the message and the edge */
 		}
+        .placeholder-text { color: #888; font-style: italic; }
+        .spotlight_image img, .tiny-image { background-color: #eee; }
 
 	</style>
-	
+
 	<script>history.scrollRestoration = "manual"</script>
 </head>
 
 <body class="is-preload" style="background: linear-gradient(115deg, white, rgb(120, 120, 120));">
     <div id="navbar">
-        <a class="active" href="index.html">Home</a> <a href="search.html">Search</a> <a href="about.html">About</a> <a href="login.html">Login</a> </div>
+        <a class="active" href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+        <a href="php_scripts/edit_showcase.php" id="edit-showcase-link" style="float:left; margin-left: 10px; background-color: #007bff; color: white; display: none;">Edit Showcase</a>
+    </div>
 
 	<!-- Wrapper -->
 	<div id="wrapper" class="divided">
-		<!-- One -->
-		<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
-			<div class="content" id="first">
-				<h2>Mona Lisa</h2>
-				<p>Spotlight Description 1</p>
-				<ul class="actions stacked">
-					<li><a href="Link 1" class="button">Learn More</a></li>
-				</ul>
-			</div>
-			<div class="image spotlight_image">
-				<a href="Link 1">
-					<img src="./images/monalisa.jpg" alt="Image failed to load" />
-				</a>
-			</div>
-		</section>
-		<!-- Two -->
-		<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+		<!-- One: Spotlight 1 -->
+		<section id="spotlight1" class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" data-slot-id="spotlight1">
 			<div class="content">
-				<h2>Spotlight 2</h2>
-				<p>Spotlight Description 2</p>
+				<h2 id="spotlight1-title"><span class="placeholder-text">Loading...</span></h2>
+				<p id="spotlight1-desc"><span class="placeholder-text">Loading description...</span></p>
 				<ul class="actions stacked">
-					<li><a href="Spotlight Link 2" class="button">Learn More</a></li>
+					<li><a href="#" id="spotlight1-button" class="button">Learn More</a></li>
 				</ul>
 			</div>
 			<div class="image spotlight_image">
-				<a href="Spotlight Link 2">
-					<img src="Spotlight Image 2" alt="Image failed to load" />
+				<a href="#" id="spotlight1-link">
+					<img src="https://placehold.co/600x400/EEE/31343C?text=Loading..." alt="Showcase image" id="spotlight1-image" />
 				</a>
 			</div>
 		</section>
-		<!-- Three -->
-		<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+
+		<!-- Two: Spotlight 2 -->
+        <section id="spotlight2" class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in" data-slot-id="spotlight2">
 			<div class="content">
-				<h2>Spotlight 3</h2>
-				<p>Spotlight Description 3</p>
+				<h2 id="spotlight2-title"><span class="placeholder-text">Loading...</span></h2>
+				<p id="spotlight2-desc"><span class="placeholder-text">Loading description...</span></p>
 				<ul class="actions stacked">
-					<li><a href="Spotlight Link 3" class="button">Learn More</a></li>
+					<li><a href="#" id="spotlight2-button" class="button">Learn More</a></li>
 				</ul>
 			</div>
 			<div class="image spotlight_image">
-				<a href="Link 3">
-					<img src="Image 3" alt="Image failed to load" />
+				<a href="#" id="spotlight2-link">
+					<img src="https://placehold.co/600x400/EEE/31343C?text=Loading..." alt="Showcase image" id="spotlight2-image" />
 				</a>
 			</div>
 		</section>
+
+		<!-- Three: Spotlight 3 -->
+        <section id="spotlight3" class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" data-slot-id="spotlight3">
+			<div class="content">
+				<h2 id="spotlight3-title"><span class="placeholder-text">Loading...</span></h2>
+				<p id="spotlight3-desc"><span class="placeholder-text">Loading description...</span></p>
+				<ul class="actions stacked">
+					<li><a href="#" id="spotlight3-button" class="button">Learn More</a></li>
+				</ul>
+			</div>
+			<div class="image spotlight_image">
+				<a href="#" id="spotlight3-link">
+					<img src="https://placehold.co/600x400/EEE/31343C?text=Loading..." alt="Showcase image" id="spotlight3-image" />
+				</a>
+			</div>
+		</section>
+
+		<!-- Gallery Section -->
 		<section class="wrapper style1 align-center content">
 			<div class="inner">
 				<h2 class="onload-content-fade-right">Art Gallery</h2>
 				<div class="items style1 medium onscroll-fade-in">
-					<section>
-						<a href="Link 1">
-							<img src="./images/monalisa.jpg" class="tiny-image"></img>
+					<!-- Gallery Item 1 -->
+                    <section id="gallery1" data-slot-id="gallery1">
+						<a href="#" id="gallery1-link">
+							<img src="https://placehold.co/300x200/EEE/31343C?text=Loading..." class="tiny-image" id="gallery1-image" alt="Gallery image">
 						</a>
-						<h3>Mona Lisa</h3>
-						<p>Mona Lisa short Description</p>
+						<h3 id="gallery1-title"><span class="placeholder-text">Loading...</span></h3>
+						<p id="gallery1-desc"><span class="placeholder-text">Loading description...</span></p>
 					</section>
-					<section>
-						<a href="Link 2">
-							<img src="Gallery 2" class="tiny-image"></img>
+					<!-- Gallery Item 2 -->
+                    <section id="gallery2" data-slot-id="gallery2">
+						<a href="#" id="gallery2-link">
+							<img src="https://placehold.co/300x200/EEE/31343C?text=Loading..." class="tiny-image" id="gallery2-image" alt="Gallery image">
 						</a>
-						<h3>Gallery 2</h3>
-						<p>Description 2</p>
+						<h3 id="gallery2-title"><span class="placeholder-text">Loading...</span></h3>
+						<p id="gallery2-desc"><span class="placeholder-text">Loading description...</span></p>
 					</section>
-					<section>
-						<a href="Link 3">
-							<img src="Gallery 3" class="tiny-image"></img>
+					<!-- Gallery Item 3 -->
+                    <section id="gallery3" data-slot-id="gallery3">
+						<a href="#" id="gallery3-link">
+							<img src="https://placehold.co/300x200/EEE/31343C?text=Loading..." class="tiny-image" id="gallery3-image" alt="Gallery image">
 						</a>
-						<h3>Gallery 3</h3>
-						<p>Description 3</p>
+						<h3 id="gallery3-title"><span class="placeholder-text">Loading...</span></h3>
+						<p id="gallery3-desc"><span class="placeholder-text">Loading description...</span></p>
 					</section>
-					<section>
-						<a href="Link 4">
-							<img src="Gallery 4" class="tiny-image"></img>
+					<!-- Gallery Item 4 -->
+                    <section id="gallery4" data-slot-id="gallery4">
+						<a href="#" id="gallery4-link">
+							<img src="https://placehold.co/300x200/EEE/31343C?text=Loading..." class="tiny-image" id="gallery4-image" alt="Gallery image">
 						</a>
-						<h3>Gallery 4</h3>
-						<p>Description 4</p>
+						<h3 id="gallery4-title"><span class="placeholder-text">Loading...</span></h3>
+						<p id="gallery4-desc"><span class="placeholder-text">Loading description...</span></p>
 					</section>
-					<section>
-						<a href="Link 5">
-							<img src="Gallery 5" class="tiny-image"></img>
+					<!-- Gallery Item 5 -->
+                    <section id="gallery5" data-slot-id="gallery5">
+						<a href="#" id="gallery5-link">
+							<img src="https://placehold.co/300x200/EEE/31343C?text=Loading..." class="tiny-image" id="gallery5-image" alt="Gallery image">
 						</a>
-						<h3>Gallery 5</h3>
-						<p>Description 5</p>
+						<h3 id="gallery5-title"><span class="placeholder-text">Loading...</span></h3>
+						<p id="gallery5-desc"><span class="placeholder-text">Loading description...</span></p>
 					</section>
 				</div>
 			</div>
 		</section>
 
-		
+
 		<!-- Footer -->
 		<footer class="wrapper style1 align-center">
 			<div class="inner content">
+                <p>&copy; Copyright 2025. All right reserved.</p>
 				<p>Template Created By: <a href="https://html5up.net">HTML5 UP</a>.</p>
 			</div>
 		</footer>
 	</div>
+
 	<!-- Scripts -->
 	<script src="./assets/js/jquery.min.js"></script>
 	<script src="./assets/js/jquery.scrollex.min.js"></script>
@@ -162,7 +174,125 @@
 	<script src="./assets/js/breakpoints.min.js"></script>
 	<script src="./assets/js/util.js"></script>
 	<script src="./assets/js/main.js"></script>
-<script src="script.js"></script>
+    <script src="script.js"></script> <!-- Your existing script for login/logout -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedInUser = localStorage.getItem('username'); // Example check
+            const editShowcaseLink = document.getElementById('edit-showcase-link');
+            if (loggedInUser === 'admin' && editShowcaseLink) { // Only show for admin
+                 editShowcaseLink.style.display = 'inline-block';
+            }
+
+            // Fetch the dynamic content for the showcase
+            fetchShowcaseData();
+        });
+
+        function fetchShowcaseData() {
+            console.log("Fetching showcase data..."); // Log start
+            fetch('php_scripts/get_showcase_data.php')
+                .then(response => {
+                    console.log("Received response, status:", response.status); // Log status
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                            throw new Error(`HTTP error! Status: ${response.status}, Response: ${text}`);
+                        });
+                    }
+                    return response.json(); // Attempt to parse as JSON
+                })
+                .then(data => {
+                    console.log("Showcase data received (JSON parsed):", data); // Log parsed data
+                    populateShowcase(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching or parsing showcase data:', error); // Log detailed error
+                    displayErrorInSlots(`Failed to load showcase content. ${error.message}`);
+                });
+        }
+
+        function populateShowcase(showcaseData) {
+            console.log("Populating showcase with data:", showcaseData);
+            const slots = ['spotlight1', 'spotlight2', 'spotlight3', 'gallery1', 'gallery2', 'gallery3', 'gallery4', 'gallery5'];
+
+            slots.forEach(slotId => {
+                console.log(`Processing slot: ${slotId}`);
+                const slotConfig = showcaseData[slotId];
+                const titleEl = document.getElementById(`${slotId}-title`);
+                const descEl = document.getElementById(`${slotId}-desc`);
+                const imageEl = document.getElementById(`${slotId}-image`);
+                const linkEl = document.getElementById(`${slotId}-link`);
+                const buttonEl = document.getElementById(`${slotId}-button`);
+
+                if (slotConfig && slotConfig.art_id && slotConfig.title) {
+                    console.log(` - Data found for ${slotId}:`, slotConfig);
+                    const artDetailUrl = `php_scripts/artwork_detail.php?id=${slotConfig.art_id}`;
+                    // Construct image URL (adjust logic as needed based on your image storage)
+                    const imageUrl = `images/${slotConfig.art_id}.jpg`; // Assuming jpg
+                    if (titleEl) titleEl.textContent = slotConfig.title;
+                    if (descEl) descEl.textContent = slotConfig.custom_description || 'View details for more information.';
+                    if (imageEl) {
+                        imageEl.src = imageUrl;
+                        imageEl.alt = slotConfig.title || 'Artwork image';
+                        imageEl.onerror = function() {
+                            this.onerror=null;
+                            // Try .png as a fallback
+                            let fallbackUrl = `images/${slotConfig.art_id}.png`;
+                            this.src = fallbackUrl;
+                            this.onerror = function() { // If .png also fails, show placeholder
+                                this.onerror = null;
+                                this.src = this.classList.contains('tiny-image') ?
+                                           'https://placehold.co/300x200/EEE/31343C?text=Not+Found' :
+                                           'https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found';
+                            }
+                        };
+                    }
+                    if (linkEl) linkEl.href = artDetailUrl;
+                    if (buttonEl) buttonEl.href = artDetailUrl;
+
+                } else {
+                    console.log(` - No valid data or art_id for ${slotId}. Displaying empty slot.`);
+                    displayEmptySlot(slotId);
+                }
+            });
+             console.log("Triggering resize event and removing preload class.");
+             window.dispatchEvent(new Event('resize'));
+             document.body.classList.remove('is-preload');
+        }
+
+        function displayEmptySlot(slotId) {
+            const titleEl = document.getElementById(`${slotId}-title`);
+            const descEl = document.getElementById(`${slotId}-desc`);
+            const imageEl = document.getElementById(`${slotId}-image`);
+            const linkEl = document.getElementById(`${slotId}-link`);
+            const buttonEl = document.getElementById(`${slotId}-button`);
+
+            if (titleEl) titleEl.innerHTML = `<span class="placeholder-text">Empty Slot</span>`;
+            if (descEl) descEl.innerHTML = `<span class="placeholder-text">Select artwork in the edit panel.</span>`;
+            if (imageEl) {
+                 imageEl.src = imageEl.classList.contains('tiny-image') ? 'https://placehold.co/300x200/EEE/31343C?text=Empty' : 'https://placehold.co/600x400/EEE/31343C?text=Empty';
+                 imageEl.alt = 'Empty slot';
+                 imageEl.onerror = null;
+            }
+            if (linkEl) linkEl.href = '#';
+            if (buttonEl) {
+                buttonEl.href = '#';
+                buttonEl.textContent = 'Configure';
+            }
+        }
+
+         function displayErrorInSlots(errorMessage) {
+             console.error("Displaying error in slots:", errorMessage);
+             const slots = ['spotlight1', 'spotlight2', 'spotlight3', 'gallery1', 'gallery2', 'gallery3', 'gallery4', 'gallery5'];
+             slots.forEach(slotId => {
+                 const titleEl = document.getElementById(`${slotId}-title`);
+                 const descEl = document.getElementById(`${slotId}-desc`);
+                 if (titleEl) titleEl.innerHTML = `<span class="placeholder-text" style="color: red;">Error</span>`;
+                 if (descEl) descEl.innerHTML = `<span class="placeholder-text" style="color: red;">${errorMessage}</span>`;
+             });
+             document.body.classList.remove('is-preload');
+         }
+
+    </script>
 </body>
 
 </html>

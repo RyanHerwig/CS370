@@ -5,10 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const navbar = document.getElementById("navbar");
     const navbarLoginLink = document.querySelector('#navbar a[href="login.html"]');
 
-    // Function to update the navbar
     function updateNavbar() {
         if (logged_in) {
-            const username = sessionStorage.getItem('username'); // Get username from session storage
+            const username = sessionStorage.getItem('username');
             if (navbar) {
                 // Hide Login link when logged in
                 if (navbarLoginLink) {
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!document.getElementById('welcome-message')) {
                     const welcomeMessage = document.createElement('a');
                     welcomeMessage.id = 'welcome-message';
-                    welcomeMessage.href = '#'; // Keep as # for click handling
+                    welcomeMessage.href = '#';
                     welcomeMessage.style.float = 'right';
                     welcomeMessage.style.marginRight = '10px';
                     welcomeMessage.textContent = `Logout`;
@@ -61,54 +60,50 @@ document.addEventListener("DOMContentLoaded", function () {
             logout();
         }
     }
-        //logout
-        function logout() {
 
-            // stupid directory logic
-            let logoutPath;
-            // Check if the current page's path ends with the admin panel file within php_scripts
-            if (window.location.pathname.endsWith('/php_scripts/admin_panel.php')) {
-                 // If we are on the admin panel, logout.php is in the same directory
-                logoutPath = 'logout.php';
-            } else {
-                // Otherwise (from root HTML files), logout.php is inside php_scripts/
-                logoutPath = 'php_scripts/logout.php';
+function logout() {
+
+    const logoutPath = '/cs370/php_scripts/logout.php'; // Use absolute path from domain root
+    console.log("Using absolute logout path:", logoutPath);
+
+    fetch(logoutPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Logout failed for URL ${response.url} with status: ${response.status}`);
             }
+            return response.text().then(text => {
+                try {
+                    return text ? JSON.parse(text) : {}
+                } catch (e) {
+                    console.warn("Logout response was not valid JSON:", text);
+                    return { success: true, redirect: null };
+                }
+            });
+        })
+        .then(data => {
+            if (data.success) {
+                logged_in = false;
+                sessionStorage.setItem('logged_in', 'false');
+                sessionStorage.removeItem('username');
+                updateNavbar();
 
-            fetch(logoutPath)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Logout failed with status: ${response.status}`);
-                    }
-                     // Do not call response.json() if the response is empty
-                        return response.text().then(text => {
-                        try {
-                            // Try to parse if text exists, otherwise return empty object
-                            return text ? JSON.parse(text) : {}
-                         } catch (e) {
-                           console.warn("Logout response was not valid JSON:", text);
-                           return {};
-                         }
-                    });
-                })
-                .then(data => {
-                    if (data.success && data.redirect) {
-                       logged_in = false;
-                        sessionStorage.setItem('logged_in', 'false');
-                        sessionStorage.removeItem('username');
-                        updateNavbar();
-                        window.location.href = data.redirect;
-                    } else {
-                         throw new Error("Logout failed or redirect URL missing from response.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Logout error:", error);
-                    alert("An error occurred during logout. Please try again."); // User-friendly message
-                });
-    }
+                let redirectTarget = data.redirect;
+                if (!redirectTarget) {
+                    console.warn("Redirect URL missing from logout response, defaulting to index.html");
+                    redirectTarget = '/cs370/index.html';
+                }
+                window.location.href = redirectTarget;
 
-    // Login form submission on login.html
+            } else {
+                throw new Error("Logout response did not indicate success.");
+            }
+        })
+        .catch(error => {
+            console.error("Logout error:", error);
+            alert("An error occurred during logout. Please try again.");
+        });
+    }   
+
     if (loginButton) {
         loginButton.addEventListener("click", async function () {
             const username = document.getElementById("username").value.trim();
