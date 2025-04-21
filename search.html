@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Search - Art Gallery</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+             /* Simple gradient background */
+            background: linear-gradient(115deg, white, rgb(210, 210, 210));
+            font-family: sans-serif; /* Add a default font */
+        }
+        /* Basic Navbar Styling (can be enhanced in main.css) */
+        #navbar {
+            overflow: hidden;
+            background-color: #333; /* Dark background for navbar */
+            padding: 10px 0;
+            text-align: center;
+        }
+        #navbar a {
+            display: inline-block; /* Display links side-by-side */
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            margin: 0 5px; /* Add some space between links */
+            border-radius: 5px; /* Rounded corners for links */
+        }
+        #navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        #navbar a.active { /* Style for the active/current link */
+            background-color: #555;
+            color: white;
+        }
+        /* Style for form elements */
+        .search-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+            text-align: left; /* Align labels left */
+        }
+        .search-form input[type="text"],
+        .search-form select,
+        .search-form input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            font-size: 1rem; /* Ensure readable font size */
+        }
+        .search-form .button {
+            margin-top: 10px;
+        }
+        /* Wrapper for fields to enable grid layout */
+        .fields {
+             display: grid;
+             grid-template-columns: 1fr 1fr; /* Two columns */
+             gap: 15px; /* Space between columns and rows */
+        }
+        /* Style for search results area */
+        #search-results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9; /* Light background for results */
+            border-radius: 8px;
+            border: 1px solid #eee;
+            text-align: left; /* Align results text left */
+        }
+        #search-results h3 {
+            margin-top: 0;
+            color: #333;
+            text-align: center; /* Center the 'Results' heading */
+            margin-bottom: 20px;
+        }
+        #search-results p.status-message { /* Style for status messages */
+            color: #555;
+            text-align: center;
+            font-style: italic;
+        }
+        /* Simple grid for results */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+            gap: 20px;
+        }
+        .result-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Stack elements vertically */
+        }
+         .result-item img {
+            max-width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Scale image nicely */
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            background-color: #eee; /* Background for unloaded images */
+         }
+         .result-item h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #444;
+            font-size: 1.1em;
+         }
+         .result-item p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+            line-height: 1.4;
+         }
+         .result-item .button {
+             margin-top: auto; /* Push button to the bottom */
+             align-self: flex-start; /* Align button left */
+         }
+         /* Loading indicator style */
+        .loader {
+            border: 5px solid #f3f3f3; /* Light grey */
+            border-top: 5px solid #555; /* Dark grey */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto; /* Center the loader */
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>history.scrollRestoration = "manual"</script>
+</head>
+<body class="is-preload">
+
+    <div id="navbar">
+        <a href="index.html">Home</a> <a class="active" href="search.html">Search</a> <a href="index.html#about">About</a> <a href="index.html#login">Login</a> </div>
+
+    <div id="wrapper" class="divided">
+
+        <section class="wrapper style1 align-center">
+            <div class="inner medium"> <h2>Search the Collection</h2>
+                <p>Find artwork by title, artist, genre, type, or creation date.</p>
+
+                <form method="GET" action="search_handler.php" class="search-form" id="searchForm">
+                    <div class="fields">
+                        <div class="field">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" id="title" placeholder="e.g., Starry Night" />
+                        </div>
+                        <div class="field">
+                            <label for="artist">Artist</label>
+                            <input type="text" name="artist" id="artist" placeholder="e.g., Vincent van Gogh" />
+                        </div>
+                        <div class="field">
+                            <label for="genre">Genre</label>
+                            <select name="genre" id="genre">
+                                <option value="">- Any Genre -</option>
+                                <option value="Post-Impressionism">Post-Impressionism</option>
+                                <option value="Renaissance">Renaissance</option>
+                                <option value="Impressionism">Impressionism</option>
+                                <option value="Cubism">Cubism</option>
+                                <option value="Realism">Realism</option>
+                                <option value="Portrait">Portrait</option>
+                                <option value="Landscape">Landscape</option>
+                                <option value="Abstract">Abstract</option>
+                                <option value="Still Life">Still Life</option>
+                                </select>
+                        </div>
+                        <div class="field">
+                            <label for="type">Type</label>
+                            <select name="type" id="type">
+                                <option value="">- Any Type -</option>
+                                <option value="Painting">Painting</option>
+                                <option value="Sculpture">Sculpture</option>
+                                <option value="Photography">Photography</option>
+                                <option value="Drawing">Drawing</option>
+                                </select>
+                        </div>
+                        <div class="field">
+                            <label for="date-start">Creation Date (Start)</label>
+                            <input type="date" name="date-start" id="date-start" />
+                        </div>
+                        <div class="field">
+                            <label for="date-end">Creation Date (End)</label>
+                            <input type="date" name="date-end" id="date-end" />
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Search" class="primary button" /></li>
+                        <li><input type="reset" value="Clear" class="button" /></li>
+                    </ul>
+                </form>
+
+                <div id="search-results">
+                    <h3>Results</h3>
+                    <p class="status-message">Enter your search criteria above and click "Search".</p>
+                    </div>
+            </div>
+        </section>
+
+        <footer class="wrapper style1 align-center">
+            <div class="inner content">
+                <p>&copy; Copyright 2025. All right reserved.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/jquery.scrollex.min.js"></script>
+    <script src="./assets/js/jquery.scrolly.min.js"></script>
+    <script src="./assets/js/browser.min.js"></script>
+    <script src="./assets/js/breakpoints.min.js"></script>
+    <script src="./assets/js/util.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+    <script>
+        const searchForm = document.getElementById('searchForm');
+        const resultsContainer = document.getElementById('search-results');
+
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Show loading indicator
+                resultsContainer.innerHTML = '<h3>Results</h3><div class="loader"></div><p class="status-message">Searching...</p>';
+
+                // Get form data
+                const formData = new FormData(searchForm);
+                const params = new URLSearchParams(formData).toString();
+                const fetchUrl = `php_scripts/search_handler.php?${params}`;
+
+                console.log('Fetching:', fetchUrl);
+
+                // Use Fetch API
+                fetch(fetchUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                             return response.json().then(errData => {
+                                throw new Error(errData.error || `HTTP error! Status: ${response.status}`);
+                            }).catch(() => {
+                                throw new Error(`HTTP error! Status: ${response.status}`);
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Received data:', data);
+                        if (data.error) {
+                           throw new Error(data.error);
+                        }
+                        displayResults(data); // Display the results
+                    })
+                    .catch(error => {
+                        console.error('Fetch Error:', error);
+                        resultsContainer.innerHTML = `<h3>Results</h3><p class="status-message" style="color: red;">Error: ${error.message}</p>`;
+                    });
+            });
+        }
+
+        function displayResults(resultsData) {
+            resultsContainer.innerHTML = '<h3>Results</h3>';
+
+            const resultsGrid = document.createElement('div');
+            resultsGrid.className = 'results-grid';
+
+            if (resultsData && Array.isArray(resultsData) && resultsData.length > 0) {
+                resultsData.forEach(item => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+
+                    const imageUrl = `https://placehold.co/600x400/EEE/31343C?text=${encodeURIComponent(item.title || 'Artwork')}`;
+
+                    resultItem.innerHTML = `
+                        <img src="${imageUrl}" alt="${item.title || 'Artwork'}" onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found';" />
+                        <h4>${item.title || 'Untitled'}</h4>
+                        <p><strong>Artist:</strong> ${item.artist_name || 'Unknown Artist'}</p>
+                        <p><strong>Genre:</strong> ${item.genre || 'N/A'} | <strong>Type:</strong> ${item.type || 'N/A'}</p>
+                        <p><strong>Date:</strong> ${item.date_created || 'N/A'}</p>
+                        <a href="artwork_detail.php?id=${item.art_id}" class="button small">View Details</a>
+                    `;
+                    resultsGrid.appendChild(resultItem);
+                });
+                resultsContainer.appendChild(resultsGrid);
+
+            } else {
+                resultsContainer.innerHTML += '<p class="status-message">No results found matching your criteria.</p>';
+            }
+        }
+
+        const clearButton = searchForm.querySelector('input[type="reset"]');
+        if (clearButton) {
+            clearButton.addEventListener('click', function() {
+                resultsContainer.innerHTML = '<h3>Results</h3><p class="status-message">Enter your search criteria above and click "Search".</p>';
+            });
+        }
+
+        window.addEventListener('load', () => {
+            document.body.classList.remove('is-preload');
+        });
+
+    </script>
+
+</body>
+</html>
