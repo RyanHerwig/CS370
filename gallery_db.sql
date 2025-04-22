@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2025 at 09:19 AM
+-- Generation Time: Apr 22, 2025 at 02:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -76,18 +76,20 @@ CREATE TABLE `artist` (
   `artist_id` int(255) UNSIGNED NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `dob` date DEFAULT NULL
+  `dob` date DEFAULT NULL,
+  `description` text DEFAULT NULL COMMENT 'Brief description or notes about the artist'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `artist`
 --
 
-INSERT INTO `artist` (`artist_id`, `first_name`, `last_name`, `dob`) VALUES
-(1, 'Vincent', 'van Gogh', '1853-03-30'),
-(2, 'Leonardo', 'da Vinci', '1452-04-15'),
-(3, 'Claude', 'Monet', '1840-11-14'),
-(4, 'Pablo', 'Picasso', '1881-10-25');
+INSERT INTO `artist` (`artist_id`, `first_name`, `last_name`, `dob`, `description`) VALUES
+(1, 'Vincent', 'van Gogh', '1853-03-30', NULL),
+(2, 'Leonardo', 'da Vinci', '1452-04-15', NULL),
+(3, 'Claude', 'Monet', '1840-11-14', NULL),
+(4, 'Pablo', 'Picasso', '1881-10-25', NULL),
+(6, 'John', 'Smith', '2025-04-01', NULL);
 
 -- --------------------------------------------------------
 
@@ -165,13 +167,13 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `art`
 --
 ALTER TABLE `art`
-  MODIFY `art_id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `art_id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `artist`
 --
 ALTER TABLE `artist`
-  MODIFY `artist_id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `artist_id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
