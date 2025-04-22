@@ -1,14 +1,10 @@
 <?php
-session_start(); // Resume the existing session
+session_start();
 
-// 1. Check using session variables set by YOUR login.php (userid and username)
-// 2. Ensure the user is the 'admin' (adjust if your admin username is different)
 if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['username'] !== 'admin') {
-    // 3. Redirect UP one level (../) to the correct login.html location
     header('Location: ../login.html');
-    exit; // Stop script execution after redirect
+    exit;
 }
-// If the check passes, the script continues and renders the HTML below
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -16,11 +12,9 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
     <title>Edit Showcase - Art Gallery</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <!-- IMPORTANT: Fix CSS/JS paths to point UP one level -->
     <link rel="stylesheet" href="../assets/css/main.css" />
     <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
     <style>
-        /* Styles remain the same */
         html { scroll-behavior: smooth; }
         body { background: linear-gradient(115deg, white, rgb(210, 210, 210)); font-family: sans-serif; }
         #navbar { overflow: hidden; background-color: #333; padding: 10px 0; text-align: center; }
@@ -42,9 +36,6 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
         #status-message.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
         .loader { border: 5px solid #f3f3f3; border-top: 5px solid #555; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 10px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        /* Add this CSS to the <style> block in edit_showcase.php */
-
-        /* In the <style> block of edit_showcase.php */
 
         .button-wrapper {
             display: flex;
@@ -54,21 +45,17 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
         }
 
         .save-button {
-            /* --- Add Flexbox properties to center the text INSIDE the button --- */
-            display: inline-flex;    /* Make the button a flex container (inline-level) */
-            align-items: center;     /* Vertically center the text node(s) inside */
-            justify-content: center; /* Horizontally center the text node(s) inside */
-            /* --- End of added properties --- */
-
+            display: inline-flex;
+            align-items: center;
+            justify-content: center; 
             max-width: 300px;
-            padding: 15px; /* Keep padding for spacing */
+            padding: 15px;
             background-color: rgb(181, 181, 181);
             color: white;
             border: none;
             border-radius: 5px;
             font-size: 13px;
             cursor: pointer;
-            /* text-align: center; /* Not strictly needed anymore as justify-content handles it */
             transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
@@ -87,13 +74,6 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
         <a href="../search.html">Search</a>
         <a href="../about.html">About</a>
     </div>
-    <script>
-        const panelButton = document.createElement('a');
-        panelButton.id = 'panel-button';
-        panelButton.href = "admin_panel.php";
-        panelButton.textContent = 'Panel';
-        navbar.appendChild(panelButton);
-    </script>
 
     <div class="edit-container">
         <h2>Edit Showcase Content</h2>
@@ -104,7 +84,6 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
         </div>
 
         <form id="editShowcaseForm" style="display: none;">
-            <!-- Form content remains the same -->
             <!-- Spotlights -->
             <h3>Spotlights</h3>
             <div class="edit-slot" data-slot-id="spotlight1">
@@ -112,7 +91,6 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
                 <label for="spotlight1-art">Select Artwork:</label>
                 <select name="spotlight1_art_id" id="spotlight1-art">
                     <option value="">-- None --</option>
-                    <!-- Options will be populated by JS -->
                 </select>
                 <div class="current-selection" id="spotlight1-current"></div>
                 <label for="spotlight1-desc">Custom Description:</label>
@@ -151,7 +129,6 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
                 <label for="gallery1-desc">Custom Description:</label>
                 <textarea name="gallery1_desc" id="gallery1-desc" placeholder="Enter a custom description for Gallery Item 1..."></textarea>
             </div>
-            <!-- Repeat for gallery2, gallery3, gallery4, gallery5 -->
              <div class="edit-slot" data-slot-id="gallery2">
                  <h4>Gallery Item 2</h4>
                  <label for="gallery2-art">Select Artwork:</label>
@@ -191,9 +168,7 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
     </div>
 
     <script>
-        // Javascript remains the same, BUT the fetch paths need fixing
-
-        let allArtworksData = []; // Store artwork data globally for previews
+        let allArtworksData = [];
 
         async function loadEditPageData() {
             const loadingIndicator = document.getElementById('loading-indicator');
@@ -201,14 +176,11 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
             const statusMessage = document.getElementById('status-message');
 
             try {
-                // Fetch both artwork list and current config concurrently
-                // IMPORTANT: Fix fetch paths - they are relative to edit_showcase.php now
                 const [artworksResponse, configResponse] = await Promise.all([
-                    fetch('get_all_artworks.php'), // No 'php_scripts/' needed
-                    fetch('get_showcase_data.php') // No 'php_scripts/' needed
+                    fetch('get_all_artworks.php'),
+                    fetch('get_showcase_data.php')
                 ]);
 
-                // Rest of the function remains the same...
                 if (!artworksResponse.ok) throw new Error(`Failed to load artworks: ${artworksResponse.statusText}`);
                 if (!configResponse.ok) throw new Error(`Failed to load config: ${configResponse.statusText}`);
 
@@ -245,8 +217,7 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
                     const option = document.createElement('option');
                     option.value = art.art_id;
                     option.textContent = `${art.title} (${art.artist_name || 'Unknown Artist'})`;
-                    // IMPORTANT: Fix image path in preview data
-                    option.dataset.imageUrl = `../images/${art.art_id}.jpg`; // Add ../
+                    option.dataset.imageUrl = `../images/${art.art_id}.jpg`;
                     option.dataset.title = art.title;
                     select.appendChild(option);
                 });
@@ -281,8 +252,7 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
                 const artId = selectedOption.value;
                 const art = allArtworksData.find(a => a.art_id == artId);
                 if (art) {
-                    // IMPORTANT: Use the corrected image path from dataset
-                    const imageUrl = selectedOption.dataset.imageUrl || `../images/${art.art_id}.jpg`; // Fallback just in case
+                    const imageUrl = selectedOption.dataset.imageUrl || `../images/${art.art_id}.jpg`;
                     previewDiv.innerHTML = `
                         Currently selected:
                         <img src="${imageUrl}" alt="${art.title}" onerror="this.style.display='none'; this.nextSibling.textContent=' (Image not found)';">
@@ -309,13 +279,11 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
             statusMessage.style.display = 'none';
 
             try {
-                // IMPORTANT: Fix fetch path
-                const response = await fetch('save_showcase_data.php', { // No 'php_scripts/' needed
+                const response = await fetch('save_showcase_data.php', {
                     method: 'POST',
                     body: formData
                 });
 
-                // Rest of the function remains the same...
                 if (!response.ok) {
                      let errorMsg = `HTTP error! Status: ${response.status}`;
                      try {
@@ -346,8 +314,6 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
                 saveButton.textContent = 'Save Showcase Configuration';
             }
         }
-
-         // No changes needed for this part
          document.addEventListener('DOMContentLoaded', function() {
             loadEditPageData();
 
@@ -361,12 +327,10 @@ if (!isset($_SESSION['userid']) || !isset($_SESSION['username']) || $_SESSION['u
         });
 
          window.addEventListener('load', () => {
-             // Don't remove is-preload until data is loaded in loadEditPageData
          });
 
     </script>
-    <!-- IMPORTANT: Fix script path -->
-    <script src="../script.js"></script> <!-- Add ../ -->
+    <script src="../script.js"></script>
 
 </body>
 </html>

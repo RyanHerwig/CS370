@@ -50,34 +50,40 @@ if ($art_id > 0 && isset($pdo)) {
     <link rel="stylesheet" href="../assets/css/main.css" />
     <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
     <style>
-        body { background: linear-gradient(115deg, white, rgb(210, 210, 210)); padding: 20px; font-family: sans-serif;}
+        body { background: linear-gradient(115deg, white, rgb(210, 210, 210)); font-family: sans-serif;}
         .detail-container { max-width: 800px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .detail-container img { max-width: 100%; height: auto; display: block; margin: 0 auto 20px auto; background-color: #eee; border: 1px solid #ccc; }
-        #navbar { overflow: hidden; background-color: #333; padding: 10px 0; text-align: center; margin-bottom: 20px; }
+        #navbar { overflow: hidden; background-color: #333; padding: 10px 0; text-align: center; width: 100%; margin-bottom: 20px; }
         #navbar a { display: inline-block; color: #f2f2f2; text-align: center; padding: 14px 16px; text-decoration: none; font-size: 17px; margin: 0 5px; border-radius: 5px; }
         #navbar a:hover { background-color: #ddd; color: black; }
         #navbar a.active { background-color: #555; color: white; }
+        #navbar a#logout-link-detail { float: right; margin-right: 10px; cursor: pointer; }
+        #navbar a#panel-button { float: left; margin-left: 10px; }
     </style>
 </head>
-<body>
-    <!-- Navbar -->
-    <div id="navbar">
+<!-- Navbar -->
+<div id="navbar">
         <a href="../index.html">Home</a>
         <a href="../search.html">Search</a>
         <a href="../about.html">About</a>
-        <?php if (isset($_SESSION['userid'])): ?>
-        <?php else: ?>
-            <a href="../login.html" style="float: right; margin-right: 10px;">Login</a>
-        <?php endif; ?>
     </div>
-
+    <script>"../script.js"</script>
+<body>
     <div class="detail-container">
         <?php if ($artwork): ?>
             <h1><?php echo htmlspecialchars($artwork['title']); ?></h1>
             <img src="<?php echo $imageUrl; ?>" alt="<?php echo htmlspecialchars($artwork['title']); ?>"
                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/EEE/31343C?text=Image+Not+Found';">
 
-            <p><strong>Artist:</strong> <?php echo htmlspecialchars($artwork['artist_name'] ?? 'Unknown Artist'); ?></p>
+            <p><strong>Artist:</strong>
+                <?php if (!empty($artwork['artist_id']) && ($artwork['artist_name'] ?? 'Unknown Artist') !== 'Unknown Artist'): ?>
+                    <a href="artist_detail.php?id=<?php echo htmlspecialchars($artwork['artist_id']); ?>">
+                        <?php echo htmlspecialchars($artwork['artist_name']); ?>
+                    </a>
+                <?php else: ?>
+                    <?php echo htmlspecialchars($artwork['artist_name'] ?? 'Unknown Artist'); ?>
+                <?php endif; ?>
+            </p>
             <p><strong>Date Created:</strong> <?php echo htmlspecialchars($artwork['date_created'] ?? 'N/A'); ?></p>
             <p><strong>Genre:</strong> <?php echo htmlspecialchars($artwork['genre'] ?? 'N/A'); ?></p>
             <p><strong>Type:</strong> <?php echo htmlspecialchars($artwork['type'] ?? 'N/A'); ?></p>

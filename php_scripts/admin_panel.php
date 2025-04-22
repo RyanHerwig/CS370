@@ -83,6 +83,16 @@ if (!isset($_SESSION['userid'])) {
                     <a href="edit_showcase.php" id="panel-button" class="button">Edit Showcase Page</a>
                     <p>Edit the homepage showcase display.</p>
                 </section>
+                <section>
+                    <span class="icon major style1 fa-gem"></span>
+                    <a href="add_art.php" id="panel-button" class="button">Add Art/Artist</a>
+                    <p>Create new entries for artists or art pieces.</p>
+                </section>
+                <section>
+                    <span class="icon major style1 fa-gem"></span>
+                    <a href="edit_art.php" id="panel-button" class="button">Edit/Remove</a>
+                    <p>Edit details or delete art/artists from the database.</p>
+                </section>
             </div>
         </div>
     </section>

@@ -20,7 +20,7 @@ session_destroy();
 
 header('Content-Type: application/json');
 
-echo json_encode(['success' => true, 'redirect' => '/cs370/index.html']); // <-- Absolute Path
+echo json_encode(['success' => true, 'redirect' => '/cs370/index.html']);
 
 exit;
 ?>
