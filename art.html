@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Database Management - Art Page</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="./assets/css/main.css" />
+	<link rel="stylesheet" href="./assets/css/art.css" />
+	<noscript>
+		<link rel="stylesheet" href="./assets/css/noscript.css" />
+	</noscript>
+
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+		#navbar {
+            overflow: hidden;
+            background-color: #333; /* Dark background for navbar */
+            padding: 10px 0;
+            text-align: center;
+        }
+        #navbar a {
+            display: inline-block; /* Display links side-by-side */
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            margin: 0 5px; /* Add some space between links */
+            border-radius: 5px; /* Rounded corners for links */
+        }
+        #navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        #navbar a.active { /* Style for the active/current link */
+            background-color: #555;
+            color: white;
+        }
+		#navbar a#welcome-message {
+			float: right; /* Align the welcome message to the right */
+			margin-right: 10px; /* Add some space between the message and the edge */
+		}
+        .placeholder-text { color: #888; font-style: italic; }
+        .spotlight_image img, .tiny-image { background-color: #eee; }
+
+	</style>
+
+	<script>history.scrollRestoration = "manual"</script>
+</head>
+
+<body class="is-preload" style="background: linear-gradient(115deg, white, rgb(120, 120, 120));">
+	<div id="navbar">
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+        <a href="php_scripts/edit_showcase.php" id="edit-showcase-link" style="float:left; margin-left: 10px; background-color: #007bff; color: white; display: none;">Edit Showcase</a>
+    </div>
+	<!-- Wrapper -->
+	<div id="wrapper" class="divided">
+		<section class="banner fullscreens onload-image-fade-in onload-content-fade-right">
+
+			<!--Header-->
+			<section class="wrapper style1 align-center content">
+				<!--Head Image-->
+				<div class="container content smaller-container">
+					<img class="main-image" src="./Pictures/BlocksLogo.png" alt="" />
+				</div>
+				<!--Description-->
+				<h2 class="condensed-text">Art Title</h2>
+				<p class="inner-text condensed-text extra-space">
+					Art Description
+				</p>
+			</section>
+			<!--Contributions-->
+
+			<!--Contribution 1-->
+			<section
+				class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+				<div class="content">
+					<h2>Artist</h2>
+					<p>
+						Artist Description
+					</p>
+				</div>
+				<div class="image no-clip2">
+					<img src="Artist Image" alt="Failed to load image" />
+				</div>
+			</section>
+
+			<!--Contribution 2-->
+			<section
+				class="spotlight style1 orient-left content-align-right image-position-center onscroll-image-fade-in">
+				<div class="content">
+					<h2>Genre?</h2>
+					<p>
+						Genre Description?
+					</p>
+				</div>
+				<div class="image no-clip2">
+					<img src="Genre Image" alt="Failed to load image" />
+				</div>
+			</section>
+
+			<!--Contribution 3-->
+			<section
+				class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+				<div class="content">
+					<h2>Type?</h2>
+					<p>
+						Type Description?
+					</p>
+				</div>
+				<div class="image no-clip">
+					<img src="Type Image" alt="Failed to load image" />
+				</div>
+			</section>
+
+			<!--Back Button-->
+			<section class="content fixedPosition">
+				<a href="./index.html" class="icon solid style2 fa-backward"><span class="label">Github</span></a>
+			</section>
+		</section>
+	</div>
+	</div>
+
+	<!-- Scripts -->
+	<script src="./assets/js/jquery.min.js"></script>
+	<script src="./assets/js/jquery.scrollex.min.js"></script>
+	<script src="./assets/js/jquery.scrolly.min.js"></script>
+	<script src="./assets/js/browser.min.js"></script>
+	<script src="./assets/js/breakpoints.min.js"></script>
+	<script src="./assets/js/util.js"></script>
+	<script src="./assets/js/main.js"></script>
+</body>
+
+</html>

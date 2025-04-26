@@ -1,0 +1,72 @@
+.container
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 100vh;
+}
+
+.main-image {
+    max-width: 100%;
+    max-height: 100vh;
+    margin-top: 0.5%;
+}
+
+.fixedPosition {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+}
+
+.major-button {
+    display: block;
+    font-size: 1.25rem;
+    width: 0%;
+    left: 38.5%;
+    padding-bottom: 20px;
+}
+
+.smaller-container {
+    height: 100%;
+    padding: 0px;
+}
+
+.condensed-text {
+    margin: 5px;
+    padding: 0px;
+}
+
+.inner-text {
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.extra-space {
+    padding-bottom: 20px;
+}
+
+.align-left-text {
+    text-wrap: wrap;
+    word-wrap: break-word;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.no-clip {
+    margin: auto;
+    height: 300px;
+    width: auto;
+}
+
+.no-clip2 {
+    margin: auto;
+    height: 500px;
+    width: auto;
+}
+
+.no-clip3 {
+    margin: auto;
+    height: 250px;
+    width: auto;
+}
