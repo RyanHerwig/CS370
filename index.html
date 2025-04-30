@@ -12,13 +12,15 @@
 		html {
 			scroll-behavior: smooth;
 		}
-		#navbar {
+		#navbar, .hamburger-menu{
             overflow: hidden;
             background-color: #333; /* Dark background for navbar */
             padding: 10px 0;
             text-align: center;
+            z-index: 100;
+            transition: 1ms;
         }
-        #navbar a {
+        #navbar a, .hamburger-menu{
             display: inline-block; /* Display links side-by-side */
             color: #f2f2f2;
             text-align: center;
@@ -28,9 +30,10 @@
             margin: 0 5px; /* Add some space between links */
             border-radius: 5px; /* Rounded corners for links */
         }
-        #navbar a:hover {
+        #navbar a:hover, .hamburger-menu:hover {
             background-color: #ddd;
             color: black;
+            cursor: pointer;
         }
         #navbar a.active { /* Style for the active/current link */
             background-color: #555;
@@ -40,6 +43,13 @@
 			float: right; /* Align the welcome message to the right */
 			margin-right: 10px; /* Add some space between the message and the edge */
 		}
+        .hamburger-menu{
+            right: 0px;
+            position: fixed;
+            padding: 10px, 0px;
+            border-radius: 0;
+            overflow: hidden;
+        }
         .placeholder-text { color: #888; font-style: italic; }
         .spotlight_image img, .tiny-image { background-color: #eee; }
 
@@ -49,13 +59,36 @@
 </head>
 
 <body class="is-preload" style="background: linear-gradient(115deg, white, rgb(120, 120, 120));">
-    <div id="navbar">
+    <div id="navbar" style="position: sticky; top: 0;">
         <a class="active" href="index.html">Home</a>
         <a href="search.html">Search</a>
         <a href="about.html">About</a>
         <a href="login.html">Login</a>
         <a href="php_scripts/edit_showcase.php" id="edit-showcase-link" style="float:left; margin-left: 10px; background-color: #007bff; color: white; display: none;">Edit Showcase</a>
+        <span class="hamburger-menu" onclick="hideNavbar()">☰</span>
     </div>
+    
+    <span style="height: 0px; padding: 0px;" id="hamburger-menu" class="hamburger-menu" onclick="displayNavbar()">☰</span>
+
+    <script>
+        const menuButton = document.getElementById("hamburger-menu");
+        const navbar = document.getElementById("navbar");
+
+        let navbarVisible = true;
+
+        function hideNavbar(){
+            navbar.style.height = "0px";
+            navbar.style.padding = "0px";
+            menuButton.style = "height: auto";
+        }
+
+        function displayNavbar(){
+            navbar.style.height = "auto";
+            navbar.style.padding = "10px, 0px";
+            menuButton.style.height = "0px";
+            menuButton.style.padding = "0px";
+        }
+    </script>
 
 	<!-- Wrapper -->
 	<div id="wrapper" class="divided">
