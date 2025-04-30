@@ -15,11 +15,13 @@
 		html {
 			scroll-behavior: smooth;
 		}
-		#navbar, #hamburger-menu {
+		#navbar {
             overflow: hidden;
             background-color: #333; /* Dark background for navbar */
             padding: 10px 0;
             text-align: center;
+			position: sticky;
+            top: 0;
         }
         #navbar a, #hamburger-menu {
             display: inline-block; /* Display links side-by-side */
@@ -52,6 +54,7 @@
             overflow: hidden;
             z-index: 101;
 			cursor: pointer;
+			background-color: #333;
         }
 
 	</style>
@@ -60,7 +63,7 @@
 </head>
 
 <body class="is-preload" style="background: linear-gradient(115deg, white, rgb(120, 120, 120));">
-	<div id="navbar" style="position: sticky; top: 0;">
+	<div id="navbar">
         <a href="index.html">Home</a>
         <a href="search.html">Search</a>
         <a href="about.html">About</a>

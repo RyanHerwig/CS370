@@ -18,11 +18,13 @@
             font-family: sans-serif; /* Add a default font */
         }
         /* Basic Navbar Styling (can be enhanced in main.css) */
-        #navbar, #hamburger-menu {
+        #navbar {
             overflow: hidden;
             background-color: #333; /* Dark background for navbar */
             padding: 10px 0;
             text-align: center;
+            position: sticky;
+            top: 0;
         }
         #navbar a, #hamburger-menu {
             display: inline-block; /* Display links side-by-side */
@@ -53,11 +55,12 @@
             overflow: hidden;
             z-index: 101;
             cursor: pointer;
+            background-color: #333;
         }
     </style>
 </head>
 <body class="is-preload">
-    <div id="navbar" style="position: sticky; top: 0;">
+    <div id="navbar">
         <a href="index.html">Home</a> <a href="search.html">Search</a> <a class="active" href="about.html">About</a> <a href="login.html">Login</a> </div>
         <div style="height: auto" id="hamburger-menu" onclick="displayNavbar()">☰</div>
 

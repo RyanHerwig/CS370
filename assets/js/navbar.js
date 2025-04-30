@@ -10,8 +10,6 @@ function displayNavbar(){
         navbarVisible = false;
     }else{
         navbar.style = "padding: 10px, 0px";
-        navbar.style.position = "sticky";
-        navbar.style.top = 0;
         navbarVisible = true;
     }
 }
