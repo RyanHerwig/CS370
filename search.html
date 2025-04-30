@@ -16,13 +16,13 @@
             background: linear-gradient(115deg, white, rgb(210, 210, 210));
             font-family: sans-serif;
         }
-        #navbar {
+        #navbar, #hamburger-menu {
             overflow: hidden;
             background-color: #333;
             padding: 10px 0;
             text-align: center;
         }
-        #navbar a {
+        #navbar a, #hamburger-menu {
             display: inline-block;
             color: #f2f2f2;
             text-align: center;
@@ -32,7 +32,7 @@
             margin: 0 5px;
             border-radius: 5px;
         }
-        #navbar a:hover {
+        #navbar a:hover, #hamburger-menu:hover {
             background-color: #ddd;
             color: black;
         }
@@ -140,6 +140,14 @@
 			float: right;
 			margin-right: 10px;
 		}
+        #hamburger-menu{
+            top: 10px;
+            right: 0px;
+            position: fixed;
+            overflow: hidden;
+            z-index: 101;
+            cursor: pointer;
+        }
     </style>
     <script>history.scrollRestoration = "manual"</script>
 </head>
@@ -147,7 +155,9 @@
 
     <div id="navbar">
         <a href="index.html">Home</a> <a class="active" href="search.html">Search</a> <a href="about.html">About</a> <a href="login.html">Login</a> </div>
+        <div style="height: auto" id="hamburger-menu" onclick="displayNavbar()">☰</div>
 
+        <script src="assets/js/navbar.js"></script>
     <div id="wrapper" class="divided">
 
         <section class="wrapper style1 align-center">
