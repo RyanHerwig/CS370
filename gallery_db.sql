@@ -64,7 +64,11 @@ INSERT INTO `art` (`art_id`, `title`, `artist_id`, `date_created`, `genre`, `typ
 (2, 'Mona Lisa', 2, '1503-01-01', 'Renaissance', 'Painting'),
 (3, 'Water Lilies', 3, '1916-01-01', 'Impressionism', 'Painting'),
 (4, 'Guernica', 4, '1937-06-01', 'Cubism', 'Painting'),
-(5, 'The Potato Eaters', 1, '1885-04-01', 'Realism', 'Painting');
+(5, 'The Potato Eaters', 1, '1885-04-01', 'Realism', 'Painting'),
+(6, 'Nighthawks', 7, '1942-01-21', 'American Realism', 'Oil Painting'),
+(7, 'Saturn Devouring His Son', 8, '1820-01-01', 'Romantisism', 'Painting'),
+(8, 'The Wounded Angel', 9, '1903-01-01', 'Undefined', 'Painting');
+
 
 -- --------------------------------------------------------
 
@@ -89,7 +93,10 @@ INSERT INTO `artist` (`artist_id`, `first_name`, `last_name`, `dob`, `descriptio
 (2, 'Leonardo', 'da Vinci', '1452-04-15', NULL),
 (3, 'Claude', 'Monet', '1840-11-14', NULL),
 (4, 'Pablo', 'Picasso', '1881-10-25', NULL),
-(6, 'John', 'Smith', '2025-04-01', NULL);
+(6, 'John', 'Smith', '2025-04-01', NULL),
+(7, 'Edward', 'Hopper', '1882-07-22', NULL),
+(8, 'Francisco', 'de Goya', '1746-03-30', null),
+(9, 'Hugo', 'Simberg', '1873-06-24', null);
 
 -- --------------------------------------------------------
 
