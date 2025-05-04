@@ -23,7 +23,7 @@
 			position: sticky;
             top: 0;
         }
-        #navbar a, #hamburger-menu {
+        #navbar a{
             display: inline-block; /* Display links side-by-side */
             color: #f2f2f2;
             text-align: center;
@@ -33,7 +33,7 @@
             margin: 0 5px; /* Add some space between links */
             border-radius: 5px; /* Rounded corners for links */
         }
-        #navbar a:hover, #hamburger-menu:hover {
+        #navbar a:hover {
             background-color: #ddd;
             color: black;
         }
@@ -47,15 +47,6 @@
 		}
         .placeholder-text { color: #888; font-style: italic; }
         .spotlight_image img, .tiny-image { background-color: #eee; }
-		#hamburger-menu{
-            top: 10px;
-            right: 0px;
-            position: fixed;
-            overflow: hidden;
-            z-index: 101;
-			cursor: pointer;
-			background-color: #333;
-        }
 
 	</style>
 
@@ -70,9 +61,7 @@
         <a href="login.html">Login</a>
         <a href="php_scripts/edit_showcase.php" id="edit-showcase-link" style="float:left; margin-left: 10px; background-color: #007bff; color: white; display: none;">Edit Showcase</a>
     </div>
-	<div style="height: auto" id="hamburger-menu" onclick="displayNavbar()">☰</div>
 
-    <script src="assets/js/navbar.js"></script>
 	<!-- Wrapper -->
 	<div id="wrapper" class="divided">
 		<section class="banner fullscreens onload-image-fade-in onload-content-fade-right">

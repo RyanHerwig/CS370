@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 logoutLink.id = 'navbar-logout-link';
                 logoutLink.href = '#';
                 logoutLink.style.float = 'right';
-                logoutLink.style.marginRight = '10px';
+                logoutLink.style.marginRight = '60px';
                 logoutLink.addEventListener('click', showLogoutPopup);
                 navbar.appendChild(logoutLink);
             }
@@ -159,5 +159,61 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
     updateNavbar();
+
+    // hide/display navbar functionality
+    const body = document.body;
+    const styleTag = document.getElementsByTagName("style")[0];
+
+    const menuButton = document.createElement("div");
+    menuButton.id = "hamburger-menu";
+    menuButton.onclick = displayNavbar;
+    menuButton.innerHTML = "☰";
+
+    styleTag.innerHTML += "\n#hamburger-menu{"+
+                                "top: 10px;"+
+                                "right: 0px;"+
+                                "position: fixed;"+
+                                "overflow: hidden;"+
+                                "z-index: 101;"+
+                                "cursor: pointer;"+
+                                "background-color: #333;"+
+                                "display: inline-block;"+
+                                "color: #f2f2f2;"+
+                                "text-align: center;"+
+                                "padding: 14px 16px;"+
+                                "text-decoration: none;"+
+                                "font-size: 17px;"+
+                                "margin: 0 5px;"+
+                                "border-radius: 5px;"+
+                            "}\n"+
+                            "#hamburger-menu:hover {"+
+                                "background-color: #ddd;"+
+                                "color: black;"+
+                                "cursor: pointer;"+
+                            "}\n";
+
+    styleTag.innerHTML += "#navbar{"+
+                                "z-index: 100;"+
+                                "transition: 1ms;"+
+                                "position: sticky;"+
+                                "top: 0;"+
+                            "}\n";
+
+    menuButton.style = "height: auto;";
+
+    body.insertBefore(menuButton, body.firstChild);
+
+    let navbarVisible = true;
+
+    function displayNavbar(){
+        if(navbarVisible){
+            navbar.style.height = "0px";
+            navbar.style.padding = "0px";
+            navbarVisible = false;
+        }else{
+            navbar.style = "padding: 10px, 0px";
+            navbarVisible = true;
+        }
+    }
 
 });
