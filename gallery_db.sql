@@ -43,6 +43,34 @@ INSERT INTO `accounts` (`userid`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `artist`
+--
+
+CREATE TABLE `artist` (
+  `artist_id` int(255) UNSIGNED NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `dob` date DEFAULT NULL,
+  `description` text DEFAULT NULL COMMENT 'Brief description or notes about the artist'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `artist`
+--
+
+INSERT INTO `artist` (`artist_id`, `first_name`, `last_name`, `dob`, `description`) VALUES
+(1, 'Vincent', 'van Gogh', '1853-03-30', NULL),
+(2, 'Leonardo', 'da Vinci', '1452-04-15', NULL),
+(3, 'Claude', 'Monet', '1840-11-14', NULL),
+(4, 'Pablo', 'Picasso', '1881-10-25', NULL),
+(6, 'John', 'Smith', '2025-04-01', NULL),
+(7, 'Edward', 'Hopper', '1882-07-22', NULL),
+(8, 'Francisco', 'de Goya', '1746-03-30', null),
+(9, 'Hugo', 'Simberg', '1873-06-24', null);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `art`
 --
 
@@ -73,57 +101,28 @@ INSERT INTO `art` (`art_id`, `title`, `artist_id`, `date_created`, `genre`, `typ
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artist`
---
-
-CREATE TABLE `artist` (
-  `artist_id` int(255) UNSIGNED NOT NULL,
-  `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL,
-  `dob` date DEFAULT NULL,
-  `description` text DEFAULT NULL COMMENT 'Brief description or notes about the artist'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `artist`
---
-
-INSERT INTO `artist` (`artist_id`, `first_name`, `last_name`, `dob`, `description`) VALUES
-(1, 'Vincent', 'van Gogh', '1853-03-30', NULL),
-(2, 'Leonardo', 'da Vinci', '1452-04-15', NULL),
-(3, 'Claude', 'Monet', '1840-11-14', NULL),
-(4, 'Pablo', 'Picasso', '1881-10-25', NULL),
-(6, 'John', 'Smith', '2025-04-01', NULL),
-(7, 'Edward', 'Hopper', '1882-07-22', NULL),
-(8, 'Francisco', 'de Goya', '1746-03-30', null),
-(9, 'Hugo', 'Simberg', '1873-06-24', null);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `showcase_config`
 --
 
 CREATE TABLE `showcase_config` (
-  `slot_id` varchar(50) NOT NULL,
-  `art_id` int(11) DEFAULT NULL,
-  `custom_description` text DEFAULT NULL,
+  `slot_id` int(255) UNSIGNED NOT NULL,
+  `showcase_name` varchar(50) NOT NULL,
   `last_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `showcase_featured_art` (
+  `slot_id` int(255) UNSIGNED NOT NULL,
+  `art_id` int(255) UNSIGNED DEFAULT NULL,
+  `custom_description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `showcase_config`
 --
 
-INSERT INTO `showcase_config` (`slot_id`, `art_id`, `custom_description`, `last_updated`) VALUES
-('gallery1', NULL, NULL, '2025-04-21 05:53:48'),
-('gallery2', NULL, NULL, '2025-04-21 05:53:48'),
-('gallery3', NULL, NULL, '2025-04-21 05:53:48'),
-('gallery4', NULL, NULL, '2025-04-21 05:53:48'),
-('gallery5', NULL, NULL, '2025-04-21 05:53:48'),
-('spotlight1', 4, 'Nice painting', '2025-04-21 06:24:20'),
-('spotlight2', 1, 'Real neat.', '2025-04-21 06:24:20'),
-('spotlight3', 3, 'Water lilies!', '2025-04-21 06:24:20');
+INSERT INTO `showcase_config` (`slot_id`, `showcase_name`, `last_updated`) VALUES
+(1, 'gallery','2025-04-21 05:53:48'),
+(2, 'spotlight', '2025-04-21 06:24:20');
 
 --
 -- Indexes for dumped tables
