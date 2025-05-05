@@ -93,7 +93,7 @@ INSERT INTO `art` (`art_id`, `title`, `artist_id`, `date_created`, `genre`, `typ
 (3, 'Water Lilies', 3, '1916-01-01', 'Impressionism', 'Painting'),
 (4, 'Guernica', 4, '1937-06-01', 'Cubism', 'Painting'),
 (5, 'The Potato Eaters', 1, '1885-04-01', 'Realism', 'Painting'),
-(6, 'Nighthawks', 7, '1942-01-21', 'American Realism', 'Painting'),
+(6, 'Nighthawks', 7, '1942-01-21', 'Realism', 'Painting'),
 (7, 'Saturn Devouring His Son', 8, '1820-01-01', 'Romantisism', 'Painting'),
 (8, 'The Wounded Angel', 9, '1903-01-01', 'Undefined', 'Painting');
 
@@ -124,6 +124,10 @@ INSERT INTO `showcase_config` (`slot_id`, `showcase_name`, `last_updated`) VALUE
 (1, 'gallery','2025-04-21 05:53:48'),
 (2, 'spotlight', '2025-04-21 06:24:20');
 
+INSERT INTO `showcase_featured_art` (`slot_id`, `art_id`, `custom_description`) VALUES
+(2, 4, 'Nice painting.'),
+(2, 1, 'Real neat.'),
+(2, 3, 'Water lilies!');
 --
 -- Indexes for dumped tables
 --
