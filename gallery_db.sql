@@ -125,6 +125,11 @@ INSERT INTO `showcase_config` (`slot_id`, `showcase_name`, `last_updated`) VALUE
 (2, 'spotlight', '2025-04-21 06:24:20');
 
 INSERT INTO `showcase_featured_art` (`slot_id`, `art_id`, `custom_description`) VALUES
+(1, null, null),
+(1, null, null),
+(1, null, null),
+(1, null, null),
+(1, null, null),
 (2, 4, 'Nice painting.'),
 (2, 1, 'Real neat.'),
 (2, 3, 'Water lilies!');
