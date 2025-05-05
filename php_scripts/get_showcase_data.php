@@ -41,7 +41,7 @@ try {
             if ($row['art_id'] !== null && empty(trim($row['artist_name']))) {
                  $row['artist_name'] = 'Unknown Artist';
             }
-            $output[$row['slot_id']] = $row;
+            $output[$row['art_id']] = $row;
         }
     } else {
         throw new Exception("Database query failed.");
